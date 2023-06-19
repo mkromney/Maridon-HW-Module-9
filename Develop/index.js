@@ -5,22 +5,21 @@ const fs = require("fs");
 // Readme Details 
 const currentDate = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
-const licenseChoices = ["MIT", "AGNU GPLv3", "Apache", "Rust", "None"];
+const licenseChoices = ["MIT", "AGNU GPLv3", "Apache", "None"];
 
 // License Badges List from: https://gist.github.com/lukas-h/2a5d00690736b4c3a7ba
 const licenseBadges = {
   MIT: "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)",
   "AGNU GPLv3": "[![License: AGNU GPLv3](https://img.shields.io/badge/License-AGNU%20GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)",
   Apache: "[![License: Apache](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)",
-  Rust: "[![License: Rust](https://img.shields.io/badge/License-MIT%2FApache--2.0-blue.svg)](https://www.rust-lang.org/policies/licenses)",
   None: ""
 };
 
 const licenseTexts = {
-  MIT: "MIT License text goes here.",
+  MIT: "Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.",
   "AGNU GPLv3": "AGNU GPLv3 License text goes here.",
-  Apache: "Apache License text goes here.",
-  Rust: "Rust License text goes here.",
+  Apache: "Licensed under the Apache License, Version 2.0 (the License); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an AS IS BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.",
+  "AGNU GPLv3": "Basic Permissions: All rights granted under this License are granted for the term of copyright on the Program, and are irrevocable provided the stated conditions are met. This License explicitly affirms your unlimited permission to run the unmodified Program. The output from running a covered work is covered by this License only if the output, given its content, constitutes a covered work. This License acknowledges your rights of fair use or other equivalent, as provided by copyright law. You may make, run and propagate covered works that you do not convey, without conditions so long as your license otherwise remains in force. You may convey covered works to others for the sole purpose of having them make modifications exclusively for you, or provide you with facilities for running those works, provided that you comply with the terms of this License in conveying all material for which you do not control copyright. Those thus making or running the covered works for you must do so exclusively on your behalf, under your direction and control, on terms that prohibit them from making any copies of your copyrighted material outside their relationship with you. Conveying under any other circumstances is permitted solely under the conditions stated below. Sublicensing is not allowed; section 10 makes it unnecessary.",
   None: "No license selected."
 };
 
@@ -147,12 +146,14 @@ inquirer
     console.log('Your email:', yourEmail);
     
     
-    const createdBy = `Created by ${answers.username} on ${currentDate}.`;
+    const createdBy = `Copyright [${answers.username}](${githubLink}) on ${currentDate} see [License](#license) below.`;
 
       // Generate README content    
   const readmeContent = `
+  <a id="README"></a>
   # ${answers.title} 
-  <small>${createdBy}</small>
+  <small>${createdBy}</small>\n
+  ${selectedLicenseBadge}
   
   ## Description
   ${answers.description}
@@ -161,9 +162,9 @@ inquirer
   1. [Installation](#installation)
   2. [Usage](#usage)
   3. [License](#license)
-  4. [Contributing](#contributing)
+  4. [Contribution Guidelines](#contribution)
   5. [Tests](#tests)
-  6. [Questions](#username)
+  6. [Questions](#questions)
   
   ## Installation
   ${answers.installation}
@@ -172,17 +173,16 @@ inquirer
   ${answers.usage}
 
   ## License
-  ${answers.license}
-  ${selectedLicenseBadge}
   ${selectedLicenseText}
 
-  ## Contributing
+  ## Contribution Guidelines
   ${answers.contributing}
   
   ## Tests
   ${answers.tests}
 
   ## Questions
+  <small>For additional questions or comments please reach me here:</small>\n
   - GitHub: [${answers.username}](${githubLink})
   - Email: [${answers.email}](mailto:${answers.email})
 
