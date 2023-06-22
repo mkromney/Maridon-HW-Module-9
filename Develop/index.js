@@ -174,7 +174,7 @@ inquirer
   ## Usage
   ${answers.usage}
 
-  ## License
+  ## License Fineprint
   ${selectedLicenseText}
 
   ## Contribution Guidelines
