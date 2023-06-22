@@ -1,4 +1,4 @@
-// The package needed for the assignment is here, in a const variable (Inquirer) // 
+// The package needed for the assignment is here, in a const variable (Inquirer). // 
 const inquirer = require("inquirer");
 const fs = require("fs");
 
@@ -106,7 +106,7 @@ inquirer
   .then(answers => {
     
     // Project Title Answer Section //
-    const projectTitle = answers.title;
+    const projectTitle = answers.tsitle;
     console.log('Project Title:', projectTitle);
 
     // Description Answer Section //
@@ -174,7 +174,7 @@ inquirer
   ## Usage
   ${answers.usage}
 
-  ## License Fineprint
+  ## License
   ${selectedLicenseText}
 
   ## Contribution Guidelines
