@@ -8,6 +8,9 @@
   ## Description
   This set of code allows a user to create a README.md file within a command line application. There the user is prompted with a set of questions that the user must fill in. The generated README.md contains the following sections: a table of contents, installation instructions, usage notes, licensing choices, contribution guidelines, ways to test the code and contact information for questions, comments or contributions.
 
+  Video Link of CLA:
+  https://watch.screencastify.com/v/I9p2kSKJt7XNdjF0mcHe
+
   ## Table of Contents
   1. [Installation](#installation)
   2. [Usage](#usage)
